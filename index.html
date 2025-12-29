@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>ब्राह्मण सेवा संकल्प | खिचड़ी महोत्सव</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #22c55e;
+      --secondary: #38bdf8;
+      --dark-bg: #070b14;
+      --card-bg: rgba(255, 255, 255, 0.08);
+      --glass-border: rgba(255, 255, 255, 0.15);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html { scroll-behavior: smooth; }
+    
+    body {
+      margin: 0;
+      font-family: 'Noto Sans Devanagari', sans-serif;
+      background-color: var(--dark-bg);
+      color: var(--text-main);
+      overflow-x: hidden; /* मोबाइल पर हॉरिजॉन्टल स्क्रॉल रोकने के लिए */
+    }
+
+    /* Background Blobs */
+    .bg-blobs {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      z-index: -1; overflow: hidden;
+    }
+    .blob {
+      position: absolute; width: 300px; height: 300px;
+      filter: blur(60px); opacity: 0.15; border-radius: 50%;
+    }
+    .b1 { background: var(--primary); top: -50px; left: -50px; }
+    .b2 { background: var(--secondary); bottom: -50px; right: -50px; }
+
+    /* --- Navigation --- */
+    header {
+      position: fixed; top: 0; width: 100%; z-index: 1000;
+      background: rgba(7, 11, 20, 0.9);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--glass-border);
+    }
+    .nav-container {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 15px;
+    }
+    .logo {
+      font-weight: 800; font-size: 1.1rem;
+      color: var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px;
+    }
+
+    /* Mobile Menu Overlay */
+    .nav-menu {
+      position: fixed; top: 0; right: -100%; width: 80%; height: 100vh;
+      background: #0b1220; display: flex; flex-direction: column;
+      padding: 80px 30px; gap: 20px; transition: 0.4s ease;
+      box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+      list-style: none; z-index: 999;
+    }
+    .nav-menu.active { right: 0; }
+    .nav-menu a {
+      text-decoration: none; color: white; font-size: 1.2rem; font-weight: 600;
+      padding: 10px 0; border-bottom: 1px solid var(--glass-border);
+    }
+
+    .menu-toggle {
+      font-size: 1.5rem; cursor: pointer; z-index: 1001;
+      background: var(--card-bg); width: 40px; height: 40px;
+      display: grid; place-items: center; border-radius: 10px;
+    }
+
+    /* --- Sections --- */
+    .container { padding: 80px 15px 40px; }
+    
+    section { padding: 40px 0; scroll-margin-top: 70px; }
+
+    .hero {
+      text-align: center; padding: 40px 15px;
+      border-radius: 20px; border: 1px solid var(--glass-border);
+      background: linear-gradient(180deg, rgba(34,197,94,0.1) 0%, transparent 100%);
+    }
+    .hero h1 { font-size: 2.2rem; line-height: 1.2; margin: 15px 0; }
+    .hero p { color: var(--text-muted); font-size: 1rem; }
+
+    .date-badge {
+      background: var(--primary); color: #052812;
+      padding: 5px 15px; border-radius: 50px; font-weight: 800; font-size: 0.9rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem; margin-bottom: 25px; display: flex; align-items: center; gap: 10px;
+    }
+    .section-title::after { content:""; height:2px; flex:1; background: linear-gradient(90deg, var(--primary), transparent); }
+
+    /* Grid for Mobile */
+    .grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
+
+    .card {
+      background: var(--card-bg); border: 1px solid var(--glass-border);
+      border-radius: 15px; padding: 20px;
+    }
+
+    /* --- Buttons --- */
+    .btn {
+      width: 100%; padding: 14px; border-radius: 12px; border: none;
+      font-weight: 700; font-size: 1rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      transition: 0.3s; margin-bottom: 10px; text-decoration: none;
+    }
+    .btn-primary { background: var(--primary); color: #052812; }
+    .btn-outline { background: rgba(255,255,255,0.05); color: white; border: 1px solid var(--glass-border); }
+
+    /* --- Schedule --- */
+    .timeline { border-left: 2px solid var(--primary); padding-left: 20px; margin-left: 10px; }
+    .timeline-item { position: relative; margin-bottom: 25px; }
+    .timeline-item::before {
+      content:""; position: absolute; left: -31px; top: 5px;
+      width: 18px; height: 18px; background: var(--dark-bg);
+      border: 3px solid var(--primary); border-radius: 50%;
+    }
+    .time { color: var(--primary); font-weight: 800; font-size: 0.9rem; }
+
+    /* --- Footer --- */
+    footer { text-align: center; padding: 40px 15px; border-top: 1px solid var(--glass-border); font-size: 0.9rem; color: var(--text-muted); }
+
+    /* --- Toast --- */
+    #toast {
+      position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+      background: #f8fafc; color: #0f172a; padding: 12px 25px;
+      border-radius: 50px; font-weight: 700; display: none; z-index: 2000;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.4); width: 90%; text-align: center;
+    }
+
+    /* Desktop Adjustments */
+    @media (min-width: 768px) {
+      .grid { grid-template-columns: 1fr 1fr; }
+      .nav-menu {
+        position: static; width: auto; height: auto; background: transparent;
+        flex-direction: row; padding: 0; box-shadow: none; right: 0;
+      }
+      .nav-menu a { border: none; font-size: 0.95rem; }
+      .menu-toggle { display: none; }
+      .hero h1 { font-size: 3.5rem; }
+      .btn { width: auto; display: inline-flex; margin-right: 10px; }
+      .container { padding-top: 100px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg-blobs">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+  </div>
+
+  <header>
+    <nav class="nav-container">
+      <a href="#" class="logo">🕉️ संकल्प</a>
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#home">मुख्य</a></li>
+        <li><a href="#schedule">कार्यक्रम</a></li>
+        <li><a href="#venue">स्थान</a></li>
+        <li><a href="#support">सहयोग</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    
+    <section id="home" class="hero">
+      <span class="date-badge">18 जनवरी 2026 (रविवार)</span>
+      <h1>खिचड़ी महोत्सव</h1>
+      <p>अंबरनाथ के पावन श्री नीलकंठेश्वर महादेव मंदिर में आपका हार्दिक स्वागत है।</p>
+      <div style="margin-top: 25px;">
+        <button class="btn btn-primary" onclick="shareInvite()">📣 व्हाट्सएप पर शेयर</button>
+        <button class="btn btn-outline" onclick="copyInvite()">📄 डिटेल्स कॉपी करें</button>
+      </div>
+    </section>
+
+    <section id="schedule">
+      <h2 class="section-title">📅 कार्यक्रम</h2>
+      <div class="card">
+        <div class="timeline">
+          <div class="timeline-item">
+            <span class="time">04:00 PM</span>
+            <div style="font-weight:700;">सुंदरकाण्ड पाठ</div>
+            <p style="font-size:0.9rem; color:var(--text-muted);">संगीतमय सत्संग एवं भजन</p>
+          </div>
+          <div class="timeline-item">
+            <span class="time">08:00 PM</span>
+            <div style="font-weight:700;">महाप्रसाद वितरण</div>
+            <p style="font-size:0.9rem; color:var(--text-muted);">खिचड़ी प्रसाद (हरि इच्छा तक)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="venue">
+      <h2 class="section-title">📍 स्थान</h2>
+      <div class="card">
+        <h3>श्री नीलकंठेश्वर महादेव मंदिर</h3>
+        <p style="font-size:0.95rem;">नालंबी रोड, खदान के पास, अंबरनाथ (पश्चिम)</p>
+        <a href="https://maps.app.goo.gl/xxxx" target="_blank" class="btn btn-outline" style="margin-top:10px;">🗺️ मैप पर देखें</a>
+      </div>
+    </section>
+
+    <section id="support">
+      <h2 class="section-title">🤝 आर्थिक सहयोग</h2>
+      <div class="grid">
+        <div class="card">
+          <div style="font-size:0.8rem; color:var(--primary); font-weight:800;">PHONEPE</div>
+          <div style="font-size:1.3rem; font-weight:800; margin:5px 0;">8983116527</div>
+          <div style="font-size:0.9rem; margin-bottom:15px;">महेश पाठक</div>
+          <button class="btn btn-primary" onclick="copyText('8983116527')">नंबर कॉपी करें</button>
+        </div>
+        <div class="card">
+          <div style="font-size:0.8rem; color:var(--secondary); font-weight:800;">GOOGLE PAY</div>
+          <div style="font-size:1.3rem; font-weight:800; margin:5px 0;">9594277583</div>
+          <div style="font-size:0.9rem; margin-bottom:15px;">राहुल उपाध्याय</div>
+          <button class="btn btn-primary" onclick="copyText('9594277583')">नंबर कॉपी करें</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p><strong>आयोजक: ब्राह्मण सेवा संकल्प संस्था</strong></p>
+    <p>© 2026 | अंबरनाथ, महाराष्ट्र</p>
+  </footer>
+
+  <div id="toast">कॉपी हो गया!</div>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navMenu').classList.toggle('active');
+    }
+
+    // मेन्यू आइटम पर क्लिक करते ही मेन्यू बंद हो जाए
+    document.querySelectorAll('.nav-menu a').forEach(item => {
+      item.addEventListener('click', () => {
+        document.getElementById('navMenu').classList.remove('active');
+      });
+    });
+
+    const inviteData = `श्री गणेशाय नमः\n\nपावन निमंत्रण: खिचड़ी महोत्सव 2026\nदिनांक: 18 जनवरी 2026\nस्थान: श्री नीलकंठेश्वर महादेव मंदिर, अंबरनाथ\n\nपूरी जानकारी यहाँ देखें: ${window.location.href}`;
+
+    function copyInvite() {
+      navigator.clipboard.writeText(inviteData);
+      showToast("विवरण कॉपी हो गया! ✅");
+    }
+
+    function copyText(txt) {
+      navigator.clipboard.writeText(txt);
+      showToast("कॉपी हो गया! ✅");
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.style.display = 'block';
+      setTimeout(() => { t.style.display = 'none'; }, 2000);
+    }
+
+    async function shareInvite() {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: 'खिचड़ी महोत्सव आमंत्रण',
+            text: inviteData,
+            url: window.location.href
+          });
+        } catch (err) {}
+      } else {
+        window.open(`https://wa.me/?text=${encodeURIComponent(inviteData)}`, '_blank');
+      }
+    }
+  </script>
+</body>
+</html>
