@@ -2,8 +2,8 @@
 <html lang="hi">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <title>ब्राह्मण सेवा संकल्प | खिचड़ी महोत्सव</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>ब्राह्मण सेवा संकल्प | खिचड़ी महोत्सव 2026</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,147 +13,237 @@
     :root {
       --primary: #22c55e;
       --secondary: #38bdf8;
+      --accent: #f59e0b;
       --dark-bg: #070b14;
-      --card-bg: rgba(255, 255, 255, 0.08);
+      --card-bg: rgba(255, 255, 255, 0.07);
       --glass-border: rgba(255, 255, 255, 0.15);
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
+      --radius: 20px;
     }
 
-    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-    html { scroll-behavior: smooth; }
-    
+    * { box-sizing: border-box; scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: 'Noto Sans Devanagari', sans-serif;
       background-color: var(--dark-bg);
       color: var(--text-main);
-      overflow-x: hidden; /* मोबाइल पर हॉरिजॉन्टल स्क्रॉल रोकने के लिए */
+      line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    /* Background Blobs */
+    /* Background Animation */
     .bg-blobs {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      z-index: -1; overflow: hidden;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: -1;
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 50%, #111827, #070b14);
     }
     .blob {
-      position: absolute; width: 300px; height: 300px;
-      filter: blur(60px); opacity: 0.15; border-radius: 50%;
+      position: absolute;
+      width: 500px; height: 500px;
+      filter: blur(80px);
+      opacity: 0.15;
+      border-radius: 50%;
+      animation: move 20s infinite alternate;
     }
-    .b1 { background: var(--primary); top: -50px; left: -50px; }
-    .b2 { background: var(--secondary); bottom: -50px; right: -50px; }
+    .b1 { background: var(--primary); top: -10%; left: -10%; }
+    .b2 { background: var(--secondary); bottom: -10%; right: -10%; animation-delay: -5s; }
+    @keyframes move { from { transform: translate(0,0); } to { transform: translate(100px, 100px); } }
 
-    /* --- Navigation --- */
+    /* Navigation */
     header {
-      position: fixed; top: 0; width: 100%; z-index: 1000;
-      background: rgba(7, 11, 20, 0.9);
+      position: fixed;
+      top: 0; width: 100%;
+      z-index: 1000;
+      background: rgba(7, 11, 20, 0.8);
       backdrop-filter: blur(15px);
       border-bottom: 1px solid var(--glass-border);
     }
     .nav-container {
-      max-width: 1200px; margin: 0 auto;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 12px 15px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
     }
     .logo {
-      font-weight: 800; font-size: 1.1rem;
-      color: var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px;
+      font-weight: 800;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--primary);
+      text-decoration: none;
     }
-
-    /* Mobile Menu Overlay */
     .nav-menu {
-      position: fixed; top: 0; right: -100%; width: 80%; height: 100vh;
-      background: #0b1220; display: flex; flex-direction: column;
-      padding: 80px 30px; gap: 20px; transition: 0.4s ease;
-      box-shadow: -10px 0 30px rgba(0,0,0,0.5);
-      list-style: none; z-index: 999;
+      display: flex;
+      gap: 25px;
+      list-style: none;
+      margin: 0; padding: 0;
     }
-    .nav-menu.active { right: 0; }
     .nav-menu a {
-      text-decoration: none; color: white; font-size: 1.2rem; font-weight: 600;
-      padding: 10px 0; border-bottom: 1px solid var(--glass-border);
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.3s;
     }
+    .nav-menu a:hover { color: var(--secondary); }
 
-    .menu-toggle {
-      font-size: 1.5rem; cursor: pointer; z-index: 1001;
-      background: var(--card-bg); width: 40px; height: 40px;
-      display: grid; place-items: center; border-radius: 10px;
-    }
+    .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
 
-    /* --- Sections --- */
-    .container { padding: 80px 15px 40px; }
-    
-    section { padding: 40px 0; scroll-margin-top: 70px; }
+    /* Main Content */
+    .container { max-width: 1100px; margin: 0 auto; padding: 100px 20px 50px; }
 
+    /* Hero Section */
     .hero {
-      text-align: center; padding: 40px 15px;
-      border-radius: 20px; border: 1px solid var(--glass-border);
-      background: linear-gradient(180deg, rgba(34,197,94,0.1) 0%, transparent 100%);
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(rgba(34, 197, 94, 0.1), transparent);
+      border-radius: var(--radius);
+      border: 1px solid var(--glass-border);
+      margin-bottom: 40px;
     }
-    .hero h1 { font-size: 2.2rem; line-height: 1.2; margin: 15px 0; }
-    .hero p { color: var(--text-muted); font-size: 1rem; }
-
+    .hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); margin: 10px 0; font-weight: 900; }
+    .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin: 0 auto; }
     .date-badge {
-      background: var(--primary); color: #052812;
-      padding: 5px 15px; border-radius: 50px; font-weight: 800; font-size: 0.9rem;
+      display: inline-block;
+      padding: 8px 20px;
+      background: var(--primary);
+      color: #052812;
+      border-radius: 50px;
+      font-weight: 800;
+      margin-bottom: 20px;
     }
 
+    /* Sections */
+    section { padding: 60px 0; scroll-margin-top: 80px; }
     .section-title {
-      font-size: 1.5rem; margin-bottom: 25px; display: flex; align-items: center; gap: 10px;
+      font-size: 2rem;
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
     }
-    .section-title::after { content:""; height:2px; flex:1; background: linear-gradient(90deg, var(--primary), transparent); }
+    .section-title::after {
+      content: "";
+      height: 2px;
+      flex: 1;
+      background: linear-gradient(90deg, var(--primary), transparent);
+    }
 
-    /* Grid for Mobile */
-    .grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
+    /* Grid Layout */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
 
+    /* Cards */
     .card {
-      background: var(--card-bg); border: 1px solid var(--glass-border);
-      border-radius: 15px; padding: 20px;
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 30px;
+      transition: transform 0.3s, background 0.3s;
     }
+    .card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.1); }
+    .card h3 { margin-top: 0; color: var(--secondary); }
 
-    /* --- Buttons --- */
+    /* Schedule Timeline */
+    .timeline { border-left: 2px solid var(--primary); padding-left: 20px; margin-left: 10px; }
+    .timeline-item { position: relative; margin-bottom: 30px; }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -31px; top: 5px;
+      width: 20px; height: 20px;
+      background: var(--dark-bg);
+      border: 3px solid var(--primary);
+      border-radius: 50%;
+    }
+    .time { font-weight: 800; color: var(--primary); display: block; }
+
+    /* Donation/Contact Cards */
+    .contact-card {
+      background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+      padding: 20px;
+      border-radius: 15px;
+      border: 1px solid var(--glass-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .btn-group { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+    
     .btn {
-      width: 100%; padding: 14px; border-radius: 12px; border: none;
-      font-weight: 700; font-size: 1rem; cursor: pointer;
-      display: flex; align-items: center; justify-content: center; gap: 10px;
-      transition: 0.3s; margin-bottom: 10px; text-decoration: none;
+      padding: 12px 25px;
+      border-radius: 12px;
+      border: none;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.3s;
     }
     .btn-primary { background: var(--primary); color: #052812; }
-    .btn-outline { background: rgba(255,255,255,0.05); color: white; border: 1px solid var(--glass-border); }
+    .btn-outline { background: transparent; border: 1px solid var(--glass-border); color: white; }
+    .btn:hover { opacity: 0.9; transform: scale(1.02); }
 
-    /* --- Schedule --- */
-    .timeline { border-left: 2px solid var(--primary); padding-left: 20px; margin-left: 10px; }
-    .timeline-item { position: relative; margin-bottom: 25px; }
-    .timeline-item::before {
-      content:""; position: absolute; left: -31px; top: 5px;
-      width: 18px; height: 18px; background: var(--dark-bg);
-      border: 3px solid var(--primary); border-radius: 50%;
+    /* Venue Map */
+    .map-placeholder {
+      width: 100%;
+      height: 300px;
+      background: #1e293b;
+      border-radius: var(--radius);
+      display: grid;
+      place-items: center;
+      margin-top: 20px;
+      border: 1px solid var(--glass-border);
     }
-    .time { color: var(--primary); font-weight: 800; font-size: 0.9rem; }
 
-    /* --- Footer --- */
-    footer { text-align: center; padding: 40px 15px; border-top: 1px solid var(--glass-border); font-size: 0.9rem; color: var(--text-muted); }
+    /* Footer */
+    footer {
+      background: #030712;
+      padding: 50px 20px;
+      text-align: center;
+      border-top: 1px solid var(--glass-border);
+    }
 
-    /* --- Toast --- */
+    /* Toast */
     #toast {
-      position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-      background: #f8fafc; color: #0f172a; padding: 12px 25px;
-      border-radius: 50px; font-weight: 700; display: none; z-index: 2000;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.4); width: 90%; text-align: center;
+      position: fixed;
+      bottom: 20px; left: 50%;
+      transform: translateX(-50%);
+      background: var(--primary);
+      color: #052812;
+      padding: 12px 25px;
+      border-radius: 50px;
+      font-weight: 700;
+      display: none;
+      z-index: 2000;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
 
-    /* Desktop Adjustments */
-    @media (min-width: 768px) {
-      .grid { grid-template-columns: 1fr 1fr; }
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
       .nav-menu {
-        position: static; width: auto; height: auto; background: transparent;
-        flex-direction: row; padding: 0; box-shadow: none; right: 0;
+        display: none;
+        position: absolute;
+        top: 100%; left: 0; width: 100%;
+        background: #0b1220;
+        flex-direction: column;
+        padding: 20px;
+        border-bottom: 1px solid var(--glass-border);
       }
-      .nav-menu a { border: none; font-size: 0.95rem; }
-      .menu-toggle { display: none; }
-      .hero h1 { font-size: 3.5rem; }
-      .btn { width: auto; display: inline-flex; margin-right: 10px; }
-      .container { padding-top: 100px; }
+      .nav-menu.active { display: flex; }
+      .menu-toggle { display: block; }
+      .hero h1 { font-size: 2.5rem; }
     }
   </style>
 </head>
@@ -166,70 +256,104 @@
 
   <header>
     <nav class="nav-container">
-      <a href="#" class="logo">🕉️ संकल्प</a>
-      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+      <a href="#" class="logo">
+        <span>🕉️</span> ब्राह्मण सेवा संकल्प
+      </a>
       <ul class="nav-menu" id="navMenu">
         <li><a href="#home">मुख्य</a></li>
+        <li><a href="#about">हमारे बारे में</a></li>
         <li><a href="#schedule">कार्यक्रम</a></li>
         <li><a href="#venue">स्थान</a></li>
         <li><a href="#support">सहयोग</a></li>
       </ul>
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
     </nav>
   </header>
 
   <main class="container">
     
     <section id="home" class="hero">
-      <span class="date-badge">18 जनवरी 2026 (रविवार)</span>
+      <div class="date-badge">18 जनवरी 2026 • रविवार</div>
       <h1>खिचड़ी महोत्सव</h1>
-      <p>अंबरनाथ के पावन श्री नीलकंठेश्वर महादेव मंदिर में आपका हार्दिक स्वागत है।</p>
-      <div style="margin-top: 25px;">
-        <button class="btn btn-primary" onclick="shareInvite()">📣 व्हाट्सएप पर शेयर</button>
-        <button class="btn btn-outline" onclick="copyInvite()">📄 डिटेल्स कॉपी करें</button>
+      <p>परम्परा, श्रद्धा और सामाजिक एकता का अद्भुत संगम। हम आप सभी का इस पावन उत्सव में हार्दिक स्वागत करते हैं।</p>
+      <div class="btn-group" style="justify-content: center;">
+        <button class="btn btn-primary" onclick="shareInvite()">📣 आमंत्रण शेयर करें</button>
+        <button class="btn btn-outline" onclick="copyInvite()">📄 विवरण कॉपी करें</button>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2 class="section-title">🚩 उत्सव के बारे में</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>संस्था का उद्देश्य</h3>
+          <p>ब्राह्मण सेवा संकल्प संस्था समाज में एकता, सांस्कृतिक मूल्यों के संरक्षण और सेवा भाव को बढ़ावा देने के लिए समर्पित है। खिचड़ी महोत्सव हमारा वार्षिक प्रमुख आयोजन है।</p>
+        </div>
+        <div class="card">
+          <h3>महोत्सव का महत्व</h3>
+          <p>खिचड़ी महोत्सव केवल भोजन का वितरण नहीं, बल्कि 'प्रसाद' के रूप में समरसता का प्रतीक है, जहाँ समाज के हर वर्ग के लोग एक साथ मिलकर प्रभु का आशीर्वाद प्राप्त करते हैं।</p>
+        </div>
       </div>
     </section>
 
     <section id="schedule">
-      <h2 class="section-title">📅 कार्यक्रम</h2>
+      <h2 class="section-title">📅 कार्यक्रम की रूपरेखा</h2>
       <div class="card">
         <div class="timeline">
           <div class="timeline-item">
-            <span class="time">04:00 PM</span>
-            <div style="font-weight:700;">सुंदरकाण्ड पाठ</div>
-            <p style="font-size:0.9rem; color:var(--text-muted);">संगीतमय सत्संग एवं भजन</p>
+            <span class="time">दोपहर 04:00 बजे</span>
+            <strong>श्री सुंदरकाण्ड पाठ</strong>
+            <p>संगीतमय सत्संग एवं सामूहिक हनुमान चालीसा पाठ।</p>
           </div>
           <div class="timeline-item">
-            <span class="time">08:00 PM</span>
-            <div style="font-weight:700;">महाप्रसाद वितरण</div>
-            <p style="font-size:0.9rem; color:var(--text-muted);">खिचड़ी प्रसाद (हरि इच्छा तक)</p>
+            <span class="time">शाम 07:30 बजे</span>
+            <strong>महाआरती</strong>
+            <p>प्रभु श्री नीलकंठेश्वर महादेव की भव्य आरती।</p>
+          </div>
+          <div class="timeline-item">
+            <span class="time">रात 08:00 बजे से</span>
+            <strong>प्रसाद वितरण</strong>
+            <p>खिचड़ी स्वरूप महाप्रसाद का वितरण (हरि इच्छा तक)।</p>
           </div>
         </div>
       </div>
     </section>
 
     <section id="venue">
-      <h2 class="section-title">📍 स्थान</h2>
-      <div class="card">
-        <h3>श्री नीलकंठेश्वर महादेव मंदिर</h3>
-        <p style="font-size:0.95rem;">नालंबी रोड, खदान के पास, अंबरनाथ (पश्चिम)</p>
-        <a href="https://maps.app.goo.gl/xxxx" target="_blank" class="btn btn-outline" style="margin-top:10px;">🗺️ मैप पर देखें</a>
+      <h2 class="section-title">📍 स्थान एवं मार्ग</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>श्री नीलकंठेश्वर महादेव मंदिर</h3>
+          <p>नालंबी रोड, खदान के पास, मोहन मेने इन्स्टेट के पीछे, अंबरनाथ (पश्चिम)</p>
+          <a href="https://maps.google.com" target="_blank" class="btn btn-primary" style="margin-top:15px;">
+            🌐 Google Maps पर देखें
+          </a>
+        </div>
+        <div class="map-placeholder">
+          <span>🗺️ मैप लोड हो रहा है...</span>
+        </div>
       </div>
     </section>
 
     <section id="support">
-      <h2 class="section-title">🤝 आर्थिक सहयोग</h2>
+      <h2 class="section-title">🤝 सहयोग एवं सेवा</h2>
+      <p style="margin-bottom:20px;">इस धार्मिक और सामाजिक आयोजन को सफल बनाने के लिए आपका स्वैच्छिक आर्थिक सहयोग प्रार्थनीय है।</p>
       <div class="grid">
         <div class="card">
-          <div style="font-size:0.8rem; color:var(--primary); font-weight:800;">PHONEPE</div>
-          <div style="font-size:1.3rem; font-weight:800; margin:5px 0;">8983116527</div>
-          <div style="font-size:0.9rem; margin-bottom:15px;">महेश पाठक</div>
-          <button class="btn btn-primary" onclick="copyText('8983116527')">नंबर कॉपी करें</button>
+          <div style="display:flex; justify-content:space-between;">
+            <strong>महेश पाठक</strong>
+            <span style="color:var(--primary)">PhonePe</span>
+          </div>
+          <div style="font-size:1.5rem; font-weight:800; margin:10px 0;">8983116527</div>
+          <button class="btn btn-outline" onclick="copyText('8983116527')">📋 कॉपी नंबर</button>
         </div>
         <div class="card">
-          <div style="font-size:0.8rem; color:var(--secondary); font-weight:800;">GOOGLE PAY</div>
-          <div style="font-size:1.3rem; font-weight:800; margin:5px 0;">9594277583</div>
-          <div style="font-size:0.9rem; margin-bottom:15px;">राहुल उपाध्याय</div>
-          <button class="btn btn-primary" onclick="copyText('9594277583')">नंबर कॉपी करें</button>
+          <div style="display:flex; justify-content:space-between;">
+            <strong>राहुल उपाध्याय</strong>
+            <span style="color:var(--secondary)">Google Pay</span>
+          </div>
+          <div style="font-size:1.5rem; font-weight:800; margin:10px 0;">9594277583</div>
+          <button class="btn btn-outline" onclick="copyText('9594277583')">📋 कॉपी नंबर</button>
         </div>
       </div>
     </section>
@@ -238,24 +362,25 @@
 
   <footer>
     <p><strong>आयोजक: ब्राह्मण सेवा संकल्प संस्था</strong></p>
-    <p>© 2026 | अंबरनाथ, महाराष्ट्र</p>
+    <p style="color:var(--text-muted); font-size:0.9rem;">© 2026 खिचड़ी महोत्सव अंबरनाथ | सर्वे भवन्तु सुखिनः</p>
   </footer>
 
   <div id="toast">कॉपी हो गया!</div>
 
   <script>
+    // मोबाइल मेन्यू टोगल
     function toggleMenu() {
       document.getElementById('navMenu').classList.toggle('active');
     }
 
-    // मेन्यू आइटम पर क्लिक करते ही मेन्यू बंद हो जाए
-    document.querySelectorAll('.nav-menu a').forEach(item => {
-      item.addEventListener('click', () => {
+    // मेनु पर क्लिक करने पर मोबाइल मेन्यू बंद करना
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
         document.getElementById('navMenu').classList.remove('active');
       });
     });
 
-    const inviteData = `श्री गणेशाय नमः\n\nपावन निमंत्रण: खिचड़ी महोत्सव 2026\nदिनांक: 18 जनवरी 2026\nस्थान: श्री नीलकंठेश्वर महादेव मंदिर, अंबरनाथ\n\nपूरी जानकारी यहाँ देखें: ${window.location.href}`;
+    const inviteData = `श्री गणेशाय नमः\n\nस्नेह निमंत्रण: खिचड़ी महोत्सव 2026\nदिनांक: 18 जनवरी 2026 (रविवार)\nस्थान: श्री नीलकंठेश्वर महादेव मंदिर, अंबरनाथ\nआयोजक: ब्राह्मण सेवा संकल्प संस्था\n\nअधिक जानकारी के लिए वेबसाइट देखें: ${window.location.href}`;
 
     function copyInvite() {
       navigator.clipboard.writeText(inviteData);
@@ -264,7 +389,7 @@
 
     function copyText(txt) {
       navigator.clipboard.writeText(txt);
-      showToast("कॉपी हो गया! ✅");
+      showToast("नंबर कॉपी हो गया! ✅");
     }
 
     function showToast(msg) {
