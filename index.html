@@ -8,22 +8,23 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
 
   <style>
     :root {
-      /* Bright Yellow & Golden Theme as requested */
-      --primary: #facc15;      /* Bright Yellow */
-      --secondary: #eab308;    /* Golden Yellow */
+      --primary: #facc15;
+      --secondary: #eab308;
       --accent: #ffffff;
-      --dark-bg: #422006;      /* Deep Yellowish Brown for contrast */
-      --card-bg: rgba(254, 240, 138, 0.1); /* Light Yellow Glass */
+      --dark-bg: #422006;
+      --card-bg: rgba(254, 240, 138, 0.1);
       --glass-border: rgba(254, 240, 138, 0.2);
       --text-main: #ffffff;
-      --text-muted: #fef9c3;   /* Lightest Yellow */
+      --text-muted: #fef9c3;
       --radius: 20px;
     }
 
-    * { box-sizing: border-box; scroll-behavior: smooth; }
+    * { box-sizing: border-box; scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
+    
     body {
       margin: 0;
       font-family: 'Noto Sans Devanagari', sans-serif;
@@ -33,7 +34,6 @@
       overflow-x: hidden;
     }
 
-    /* Background Animation with Yellow Tones */
     .bg-blobs {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -53,12 +53,11 @@
     .b2 { background: #ca8a04; bottom: -10%; right: -10%; animation-delay: -5s; }
     @keyframes move { from { transform: translate(0,0); } to { transform: translate(100px, 100px); } }
 
-    /* Navigation */
     header {
       position: fixed;
       top: 0; width: 100%;
       z-index: 1000;
-      background: rgba(66, 32, 6, 0.85);
+      background: rgba(66, 32, 6, 0.9);
       backdrop-filter: blur(15px);
       border-bottom: 1px solid var(--glass-border);
     }
@@ -68,20 +67,20 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 20px;
+      padding: 12px 20px;
     }
     .logo {
       font-weight: 800;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       color: var(--primary);
       text-decoration: none;
     }
     .nav-menu {
       display: flex;
-      gap: 25px;
+      gap: 20px;
       list-style: none;
       margin: 0; padding: 0;
     }
@@ -90,44 +89,53 @@
       color: var(--text-main);
       font-weight: 500;
       font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
       transition: color 0.3s;
     }
     .nav-menu a:hover { color: var(--primary); }
 
-    .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--primary); }
+    .menu-toggle { 
+      display: none; 
+      padding: 8px;
+      cursor: pointer; 
+      color: var(--primary); 
+    }
 
-    /* Main Content */
-    .container { max-width: 1100px; margin: 0 auto; padding: 100px 20px 50px; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 100px 16px 50px; }
 
-    /* Hero Section */
     .hero {
       text-align: center;
-      padding: 60px 20px;
+      padding: 40px 15px;
       background: linear-gradient(rgba(250, 204, 21, 0.15), transparent);
       border-radius: var(--radius);
       border: 1px solid var(--glass-border);
       margin-bottom: 40px;
     }
-    .hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); margin: 10px 0; font-weight: 900; color: #fff; }
-    .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin: 0 auto; }
+    .hero h1 { font-size: clamp(2.2rem, 8vw, 4rem); margin: 10px 0; font-weight: 900; color: #fff; }
+    .hero p { font-size: 1.1rem; color: var(--text-muted); max-width: 700px; margin: 0 auto; }
+    
     .date-badge {
-      display: inline-block;
-      padding: 8px 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
       background: var(--primary);
       color: #422006;
       border-radius: 50px;
       font-weight: 800;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
+      font-size: 0.9rem;
     }
 
-    /* Sections */
-    section { padding: 60px 0; scroll-margin-top: 80px; }
+    section { padding: 40px 0; scroll-margin-top: 80px; }
     .section-title {
-      font-size: 2rem;
-      margin-bottom: 30px;
+      font-size: 1.6rem;
+      margin-bottom: 25px;
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 12px;
       color: var(--primary);
     }
     .section-title::after {
@@ -137,104 +145,107 @@
       background: linear-gradient(90deg, var(--primary), transparent);
     }
 
-    /* Grid Layout */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
     }
 
-    /* Cards */
     .card {
       background: var(--card-bg);
       border: 1px solid var(--glass-border);
       border-radius: var(--radius);
-      padding: 30px;
-      transition: transform 0.3s, background 0.3s;
+      padding: 25px;
       backdrop-filter: blur(5px);
     }
-    .card:hover { transform: translateY(-5px); background: rgba(254, 240, 138, 0.2); }
-    .card h3 { margin-top: 0; color: var(--primary); }
+    .card h3 { margin-top: 0; color: var(--primary); font-size: 1.25rem; display: flex; align-items: center; gap: 8px; }
 
-    /* Patrons List Styling */
     .patron-list { list-style: none; padding: 0; margin: 0; }
     .patron-item { 
       display: flex; 
       justify-content: space-between; 
       align-items: center; 
-      padding: 15px 0; 
-      border-bottom: 1px solid rgba(255,255,255,0.1); 
+      padding: 12px 0; 
+      border-bottom: 1px solid rgba(255,255,255,0.05); 
     }
-    .patron-item:last-child { border-bottom: none; }
-    .patron-name { font-weight: 600; font-size: 1.1rem; }
-    .patron-amount { color: var(--primary); font-weight: 800; font-size: 1.2rem; }
+    .patron-name { font-weight: 500; }
+    .patron-amount { color: var(--primary); font-weight: 800; }
 
-    /* Schedule Timeline */
     .timeline { border-left: 2px solid var(--primary); padding-left: 20px; margin-left: 10px; }
-    .timeline-item { position: relative; margin-bottom: 30px; }
+    .timeline-item { position: relative; margin-bottom: 25px; }
     .timeline-item::before {
       content: "";
       position: absolute;
-      left: -31px; top: 5px;
-      width: 20px; height: 20px;
-      background: var(--dark-bg);
-      border: 3px solid var(--primary);
+      left: -31px; top: 6px;
+      width: 18px; height: 18px;
+      background: var(--primary);
       border-radius: 50%;
+      box-shadow: 0 0 10px var(--primary);
     }
-    .time { font-weight: 800; color: var(--primary); display: block; }
+    .time { font-weight: 800; color: var(--primary); display: block; font-size: 0.9rem; }
 
-    /* Buttons */
-    .btn-group { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+    .btn-group { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
     .btn {
-      padding: 12px 25px;
-      border-radius: 12px;
+      padding: 14px 22px;
+      border-radius: 14px;
       border: none;
       font-weight: 700;
       cursor: pointer;
-      text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      transition: 0.3s;
+      transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      font-size: 0.95rem;
+      min-height: 48px;
     }
-    .btn-primary { background: var(--primary); color: #422006; }
-    .btn-outline { background: transparent; border: 1px solid var(--glass-border); color: white; }
-    .btn:hover { opacity: 0.9; transform: scale(1.02); }
+    .btn-primary { background: var(--primary); color: #422006; box-shadow: 0 4px 15px rgba(250, 204, 21, 0.2); }
+    .btn-outline { background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: white; }
+    .btn:active { transform: scale(0.96); opacity: 0.9; }
 
-    /* Footer */
     footer {
       background: #271203;
-      padding: 50px 20px;
+      padding: 40px 20px;
       text-align: center;
       border-top: 1px solid var(--glass-border);
     }
 
     #toast {
       position: fixed;
-      bottom: 20px; left: 50%;
+      bottom: 30px; left: 50%;
       transform: translateX(-50%);
       background: var(--primary);
       color: #422006;
-      padding: 12px 25px;
-      border-radius: 50px;
+      padding: 12px 24px;
+      border-radius: 12px;
       font-weight: 700;
       display: none;
       z-index: 2000;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
     }
 
     @media (max-width: 768px) {
+      .menu-toggle { display: block; }
       .nav-menu {
-        display: none;
-        position: absolute;
-        top: 100%; left: 0; width: 100%;
+        position: fixed;
+        top: 0; right: -100%;
+        width: 75%; height: 100vh;
         background: #422006;
         flex-direction: column;
-        padding: 20px;
-        border-bottom: 1px solid var(--glass-border);
+        padding: 80px 25px;
+        transition: 0.3s ease-in-out;
+        box-shadow: -5px 0 25px rgba(0,0,0,0.5);
+        z-index: 1001;
       }
-      .nav-menu.active { display: flex; }
-      .menu-toggle { display: block; }
+      .nav-menu.active { right: 0; }
+      .nav-menu a { font-size: 1.1rem; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+      .menu-overlay {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0,0,0,0.6);
+        display: none;
+        z-index: 1000;
+      }
+      .menu-overlay.active { display: block; }
     }
   </style>
 </head>
@@ -245,41 +256,52 @@
     <div class="blob b2"></div>
   </div>
 
+  <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+
   <header>
     <nav class="nav-container">
       <a href="#" class="logo">
-        <span>🕉️</span> ब्राह्मण सेवा संकल्प
+        <span class="material-icons-round">temple_hindu</span> ब्राह्मण सेवा संकल्प
       </a>
       <ul class="nav-menu" id="navMenu">
-        <li><a href="#home">मुख्य</a></li>
-        <li><a href="#donors">आश्रय दाता</a></li>
-        <li><a href="#about">हमारे बारे में</a></li>
-        <li><a href="#schedule">कार्यक्रम</a></li>
-        <li><a href="#venue">स्थान</a></li>
-        <li><a href="#support">सहयोग</a></li>
+        <li><a href="#home"><span class="material-icons-round">home</span>मुख्य</a></li>
+        <li><a href="#donors"><span class="material-icons-round">volunteer_activism</span>अंश दान</a></li>
+        <li><a href="#about"><span class="material-icons-round">info</span>हमारे बारे में</a></li>
+        <li><a href="#schedule"><span class="material-icons-round">event</span>कार्यक्रम</a></li>
+        <li><a href="#venue"><span class="material-icons-round">location_on</span>स्थान</a></li>
+        <li><a href="#support"><span class="material-icons-round">payments</span>सहयोग</a></li>
       </ul>
-      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+      <div class="menu-toggle" onclick="toggleMenu()">
+        <span class="material-icons-round" style="font-size: 32px;">menu</span>
+      </div>
     </nav>
   </header>
 
   <main class="container">
     
     <section id="home" class="hero">
-      <div class="date-badge">18 जनवरी 2026 • रविवार</div>
+      <div class="date-badge">
+        <span class="material-icons-round" style="font-size: 18px;">calendar_today</span>
+        18 जनवरी 2026 • रविवार
+      </div>
       <h1>खिचड़ी महोत्सव</h1>
       <p>परम्परा, श्रद्धा और सामाजिक एकता का अद्भुत संगम। हम आप सभी का इस पावन उत्सव में हार्दिक स्वागत करते हैं।</p>
       <div class="btn-group" style="justify-content: center;">
-        <button class="btn btn-primary" onclick="shareInvite()">📣 आमंत्रण शेयर करें</button>
-        <button class="btn btn-outline" onclick="copyInvite()">📄 विवरण कॉपी करें</button>
+        <button class="btn btn-primary" onclick="shareInvite()">
+          <span class="material-icons-round">share</span> आमंत्रण शेयर करें
+        </button>
+        <button class="btn btn-outline" onclick="copyInvite()">
+          <span class="material-icons-round">content_copy</span> विवरण कॉपी करें
+        </button>
       </div>
     </section>
 
     <section id="about">
-      <h2 class="section-title">🚩 संस्था का परिचय</h2>
+      <h2 class="section-title"><span class="material-icons-round">flag</span> संस्था का परिचय</h2>
       <div class="grid">
         <div class="card" style="grid-column: 1 / -1;">
           <h3>संस्कृति, एकता और सेवा का संकल्प</h3>
-          <p style="font-size: 1.2rem;">
+          <p style="font-size: 1.1rem;">
             एकता का भाव और सेवा का संकल्प—यही <strong>'ब्राह्मण सेवा संकल्प'</strong> संस्था की पहचान है। 
             हमारी संस्था हमारे सभी <strong>ब्राह्मण भाइयों को एक सूत्र में पिरोने का एक पावन माध्यम</strong> है। 
             जहाँ हम अपनी सांस्कृतिक धरोहर को सहेजने के साथ-साथ, अपने समाज और <strong>पर्यावरण (Environment)</strong> को संरक्षित करने के लिए भी अनेकों कार्यक्रम आयोजित करते हैं। 
@@ -290,9 +312,12 @@
     </section>
 
     <section id="donors">
-      <h2 class="section-title">💎 आश्रय दाता</h2>
+      <h2 class="section-title"><span class="material-icons-round">diamond</span> अंश दान</h2>
       <div class="card">
-        <h3 style="margin-bottom: 20px; font-size: 1.2rem;">खिचड़ी महोत्सव हेतु सहयोग करने वाले आश्रय दाताओं के नाम:</h3>
+        <h3 style="margin-bottom: 20px; font-size: 1.1rem; color: var(--text-main);">
+          <span class="material-icons-round" style="color: var(--primary);">groups</span>
+          खिचड़ी महोत्सव हेतु सहयोग करने वाले अंश दानकर्ताओं के नाम:
+        </h3>
         <ul class="patron-list">
           <li class="patron-item">
             <span class="patron-name">1. सौ. मीना चिलवाल जी</span>
@@ -311,7 +336,7 @@
     </section>
 
     <section id="schedule">
-      <h2 class="section-title">📅 कार्यक्रम की रूपरेखा</h2>
+      <h2 class="section-title"><span class="material-icons-round">history_edu</span> कार्यक्रम की रूपरेखा</h2>
       <div class="card">
         <div class="timeline">
           <div class="timeline-item">
@@ -334,40 +359,45 @@
     </section>
 
     <section id="venue">
-      <h2 class="section-title">📍 स्थान एवं मार्ग</h2>
+      <h2 class="section-title"><span class="material-icons-round">map</span> स्थान एवं मार्ग</h2>
       <div class="grid">
         <div class="card">
           <h3>श्री नीलकंठेश्वर महादेव मंदिर</h3>
           <p>नालंबी रोड, खदान के पास, मोहन मेने इन्स्टेट के पीछे, अंबरनाथ (पश्चिम)</p>
-          <a href="#" target="_blank" class="btn btn-primary" style="margin-top:15px;">
-            🌐 Google Maps पर देखें
+          <a href="#" target="_blank" class="btn btn-primary" style="margin-top:15px; width: 100%; justify-content: center;">
+            <span class="material-icons-round">explore</span> Google Maps पर देखें
           </a>
         </div>
-        <div class="card" style="display: grid; place-items: center; background: #543101;">
+        <div class="card" style="display: flex; flex-direction: column; align-items: center; justify-content: center; background: #543101; text-align: center;">
+          <span class="material-icons-round" style="font-size: 48px; opacity: 0.5; margin-bottom: 10px;">map</span>
           <span>🗺️ मैप लोड हो रहा है...</span>
         </div>
       </div>
     </section>
 
     <section id="support">
-      <h2 class="section-title">🤝 सहयोग एवं सेवा</h2>
-      <p style="margin-bottom:20px;">इस धार्मिक और सामाजिक आयोजन को सफल बनाने के लिए आपका स्वैच्छिक आर्थिक सहयोग प्रार्थनीय है।</p>
+      <h2 class="section-title"><span class="material-icons-round">handshake</span> सहयोग एवं सेवा</h2>
+      <p style="margin-bottom:20px; opacity: 0.9;">इस धार्मिक और सामाजिक आयोजन को सफल बनाने के लिए आपका स्वैच्छिक आर्थिक सहयोग प्रार्थनीय है।</p>
       <div class="grid">
         <div class="card">
-          <div style="display:flex; justify-content:space-between;">
-            <strong>महेश पाठक</strong>
-            <span style="color:var(--primary)">PhonePe</span>
+          <div style="display:flex; justify-content:space-between; align-items: center; margin-bottom: 10px;">
+            <strong style="font-size: 1.1rem;">महेश पाठक</strong>
+            <span style="background: #673ab7; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 800;">PhonePe</span>
           </div>
-          <div style="font-size:1.5rem; font-weight:800; margin:10px 0;">8983116527</div>
-          <button class="btn btn-outline" onclick="copyText('8983116527')">📋 कॉपी नंबर</button>
+          <div style="font-size:1.6rem; font-weight:800; color: var(--primary); margin:10px 0;">8983116527</div>
+          <button class="btn btn-outline" onclick="copyText('8983116527')" style="width: 100%; justify-content: center;">
+            <span class="material-icons-round">content_copy</span> कॉपी नंबर
+          </button>
         </div>
         <div class="card">
-          <div style="display:flex; justify-content:space-between;">
-            <strong>राहुल उपाध्याय</strong>
-            <span style="color:var(--primary)">Google Pay</span>
+          <div style="display:flex; justify-content:space-between; align-items: center; margin-bottom: 10px;">
+            <strong style="font-size: 1.1rem;">राहुल उपाध्याय</strong>
+            <span style="background: #1a73e8; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 800;">Google Pay</span>
           </div>
-          <div style="font-size:1.5rem; font-weight:800; margin:10px 0;">9594277583</div>
-          <button class="btn btn-outline" onclick="copyText('9594277583')">📋 कॉपी नंबर</button>
+          <div style="font-size:1.6rem; font-weight:800; color: var(--primary); margin:10px 0;">9594277583</div>
+          <button class="btn btn-outline" onclick="copyText('9594277583')" style="width: 100%; justify-content: center;">
+            <span class="material-icons-round">content_copy</span> कॉपी नंबर
+          </button>
         </div>
       </div>
     </section>
@@ -376,19 +406,23 @@
 
   <footer>
     <p><strong>आयोजक: ब्राह्मण सेवा संकल्प संस्था</strong></p>
-    <p style="color:var(--text-muted); font-size:0.9rem;">© 2026 खिचड़ी महोत्सव अंबरनाथ | सर्वे भवन्तु सुखिनः</p>
+    <p style="color:var(--text-muted); font-size:0.85rem; opacity: 0.8;">© 2026 खिचड़ी महोत्सव अंबरनाथ | सर्वे भवन्तु सुखिनः</p>
   </footer>
 
   <div id="toast">कॉपी हो गया!</div>
 
   <script>
     function toggleMenu() {
-      document.getElementById('navMenu').classList.toggle('active');
+      const menu = document.getElementById('navMenu');
+      const overlay = document.getElementById('menuOverlay');
+      menu.classList.toggle('active');
+      overlay.classList.toggle('active');
     }
 
     document.querySelectorAll('.nav-menu a').forEach(link => {
       link.addEventListener('click', () => {
         document.getElementById('navMenu').classList.remove('active');
+        document.getElementById('menuOverlay').classList.remove('active');
       });
     });
 
