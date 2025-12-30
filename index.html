@@ -11,14 +11,15 @@
 
   <style>
     :root {
-      --primary: #22c55e;
-      --secondary: #38bdf8;
-      --accent: #f59e0b;
-      --dark-bg: #070b14;
-      --card-bg: rgba(255, 255, 255, 0.07);
-      --glass-border: rgba(255, 255, 255, 0.15);
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
+      /* Bright Yellow & Golden Theme as requested */
+      --primary: #facc15;      /* Bright Yellow */
+      --secondary: #eab308;    /* Golden Yellow */
+      --accent: #ffffff;
+      --dark-bg: #422006;      /* Deep Yellowish Brown for contrast */
+      --card-bg: rgba(254, 240, 138, 0.1); /* Light Yellow Glass */
+      --glass-border: rgba(254, 240, 138, 0.2);
+      --text-main: #ffffff;
+      --text-muted: #fef9c3;   /* Lightest Yellow */
       --radius: 20px;
     }
 
@@ -32,24 +33,24 @@
       overflow-x: hidden;
     }
 
-    /* Background Animation */
+    /* Background Animation with Yellow Tones */
     .bg-blobs {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
       z-index: -1;
       overflow: hidden;
-      background: radial-gradient(circle at 50% 50%, #111827, #070b14);
+      background: radial-gradient(circle at 50% 50%, #713f12, #422006);
     }
     .blob {
       position: absolute;
       width: 500px; height: 500px;
       filter: blur(80px);
-      opacity: 0.15;
+      opacity: 0.25;
       border-radius: 50%;
       animation: move 20s infinite alternate;
     }
-    .b1 { background: var(--primary); top: -10%; left: -10%; }
-    .b2 { background: var(--secondary); bottom: -10%; right: -10%; animation-delay: -5s; }
+    .b1 { background: #fde047; top: -10%; left: -10%; }
+    .b2 { background: #ca8a04; bottom: -10%; right: -10%; animation-delay: -5s; }
     @keyframes move { from { transform: translate(0,0); } to { transform: translate(100px, 100px); } }
 
     /* Navigation */
@@ -57,7 +58,7 @@
       position: fixed;
       top: 0; width: 100%;
       z-index: 1000;
-      background: rgba(7, 11, 20, 0.8);
+      background: rgba(66, 32, 6, 0.85);
       backdrop-filter: blur(15px);
       border-bottom: 1px solid var(--glass-border);
     }
@@ -91,9 +92,9 @@
       font-size: 0.95rem;
       transition: color 0.3s;
     }
-    .nav-menu a:hover { color: var(--secondary); }
+    .nav-menu a:hover { color: var(--primary); }
 
-    .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
+    .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--primary); }
 
     /* Main Content */
     .container { max-width: 1100px; margin: 0 auto; padding: 100px 20px 50px; }
@@ -102,18 +103,18 @@
     .hero {
       text-align: center;
       padding: 60px 20px;
-      background: linear-gradient(rgba(34, 197, 94, 0.1), transparent);
+      background: linear-gradient(rgba(250, 204, 21, 0.15), transparent);
       border-radius: var(--radius);
       border: 1px solid var(--glass-border);
       margin-bottom: 40px;
     }
-    .hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); margin: 10px 0; font-weight: 900; }
+    .hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); margin: 10px 0; font-weight: 900; color: #fff; }
     .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin: 0 auto; }
     .date-badge {
       display: inline-block;
       padding: 8px 20px;
       background: var(--primary);
-      color: #052812;
+      color: #422006;
       border-radius: 50px;
       font-weight: 800;
       margin-bottom: 20px;
@@ -127,6 +128,7 @@
       display: flex;
       align-items: center;
       gap: 15px;
+      color: var(--primary);
     }
     .section-title::after {
       content: "";
@@ -149,9 +151,10 @@
       border-radius: var(--radius);
       padding: 30px;
       transition: transform 0.3s, background 0.3s;
+      backdrop-filter: blur(5px);
     }
-    .card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.1); }
-    .card h3 { margin-top: 0; color: var(--secondary); }
+    .card:hover { transform: translateY(-5px); background: rgba(254, 240, 138, 0.2); }
+    .card h3 { margin-top: 0; color: var(--primary); }
 
     /* Patrons List Styling */
     .patron-list { list-style: none; padding: 0; margin: 0; }
@@ -164,7 +167,7 @@
     }
     .patron-item:last-child { border-bottom: none; }
     .patron-name { font-weight: 600; font-size: 1.1rem; }
-    .patron-amount { color: var(--accent); font-weight: 800; font-size: 1.2rem; }
+    .patron-amount { color: var(--primary); font-weight: 800; font-size: 1.2rem; }
 
     /* Schedule Timeline */
     .timeline { border-left: 2px solid var(--primary); padding-left: 20px; margin-left: 10px; }
@@ -180,9 +183,8 @@
     }
     .time { font-weight: 800; color: var(--primary); display: block; }
 
-    /* Donation/Contact Cards */
+    /* Buttons */
     .btn-group { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
-    
     .btn {
       padding: 12px 25px;
       border-radius: 12px;
@@ -195,13 +197,13 @@
       gap: 8px;
       transition: 0.3s;
     }
-    .btn-primary { background: var(--primary); color: #052812; }
+    .btn-primary { background: var(--primary); color: #422006; }
     .btn-outline { background: transparent; border: 1px solid var(--glass-border); color: white; }
     .btn:hover { opacity: 0.9; transform: scale(1.02); }
 
     /* Footer */
     footer {
-      background: #030712;
+      background: #271203;
       padding: 50px 20px;
       text-align: center;
       border-top: 1px solid var(--glass-border);
@@ -212,7 +214,7 @@
       bottom: 20px; left: 50%;
       transform: translateX(-50%);
       background: var(--primary);
-      color: #052812;
+      color: #422006;
       padding: 12px 25px;
       border-radius: 50px;
       font-weight: 700;
@@ -226,14 +228,13 @@
         display: none;
         position: absolute;
         top: 100%; left: 0; width: 100%;
-        background: #0b1220;
+        background: #422006;
         flex-direction: column;
         padding: 20px;
         border-bottom: 1px solid var(--glass-border);
       }
       .nav-menu.active { display: flex; }
       .menu-toggle { display: block; }
-      .hero h1 { font-size: 2.5rem; }
     }
   </style>
 </head>
@@ -273,6 +274,21 @@
       </div>
     </section>
 
+    <section id="about">
+      <h2 class="section-title">🚩 संस्था का परिचय</h2>
+      <div class="grid">
+        <div class="card" style="grid-column: 1 / -1;">
+          <h3>संस्कृति, एकता और सेवा का संकल्प</h3>
+          <p style="font-size: 1.2rem;">
+            एकता का भाव और सेवा का संकल्प—यही <strong>'ब्राह्मण सेवा संकल्प'</strong> संस्था की पहचान है। 
+            हमारी संस्था हमारे सभी <strong>ब्राह्मण भाइयों को एक सूत्र में पिरोने का एक पावन माध्यम</strong> है। 
+            जहाँ हम अपनी सांस्कृतिक धरोहर को सहेजने के साथ-साथ, अपने समाज और <strong>पर्यावरण (Environment)</strong> को संरक्षित करने के लिए भी अनेकों कार्यक्रम आयोजित करते हैं। 
+            इसी कड़ी में हमारा वार्षिक <strong>'खिचड़ी महोत्सव'</strong> प्रेम, सद्भाव और एकजुटता का एक जीवंत प्रतीक है।
+          </p>
+        </div>
+      </div>
+    </section>
+
     <section id="donors">
       <h2 class="section-title">💎 आश्रय दाता</h2>
       <div class="card">
@@ -294,33 +310,19 @@
       </div>
     </section>
 
-    <section id="about">
-      <h2 class="section-title">🚩 उत्सव के बारे में</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>संस्था का उद्देश्य</h3>
-          <p>ब्राह्मण सेवा संकल्प संस्था समाज में एकता, सांस्कृतिक मूल्यों के संरक्षण और सेवा भाव को बढ़ावा देने के लिए समर्पित है। खिचड़ी महोत्सव हमारा वार्षिक प्रमुख आयोजन है।</p>
-        </div>
-        <div class="card">
-          <h3>महोत्सव का महत्व</h3>
-          <p>खिचड़ी महोत्सव केवल भोजन का वितरण नहीं, बल्कि 'प्रसाद' के रूप में समरसता का प्रतीक है, जहाँ समाज के हर वर्ग के लोग एक साथ मिलकर प्रभु का आशीर्वाद प्राप्त करते हैं।</p>
-        </div>
-      </div>
-    </section>
-
     <section id="schedule">
       <h2 class="section-title">📅 कार्यक्रम की रूपरेखा</h2>
       <div class="card">
         <div class="timeline">
           <div class="timeline-item">
             <span class="time">दोपहर 04:00 बजे</span>
-            <strong>श्री सुंदरकाण्ड पाठ</strong>
-            <p>संगीतमय सत्संग एवं सामूहिक हनुमान चालीसा पाठ।</p>
+            <strong>श्री सुंदरकाण्ड संगीतमय पाठ</strong>
+            <p> भजन, सत्संग एवं सामूहिक हनुमान चालीसा पाठ।</p>
           </div>
           <div class="timeline-item">
-            <span class="time">शाम 07:30 बजे</span>
+            <span class="time">शाम 08:00 बजे</span>
             <strong>महाआरती</strong>
-            <p>प्रभु श्री नीलकंठेश्वर महादेव की भव्य आरती।</p>
+            <p>श्री नीलकंठेश्वर महादेव की भव्य आरती।</p>
           </div>
           <div class="timeline-item">
             <span class="time">रात 08:00 बजे से</span>
@@ -337,11 +339,11 @@
         <div class="card">
           <h3>श्री नीलकंठेश्वर महादेव मंदिर</h3>
           <p>नालंबी रोड, खदान के पास, मोहन मेने इन्स्टेट के पीछे, अंबरनाथ (पश्चिम)</p>
-          <a href="https://maps.google.com" target="_blank" class="btn btn-primary" style="margin-top:15px;">
+          <a href="#" target="_blank" class="btn btn-primary" style="margin-top:15px;">
             🌐 Google Maps पर देखें
           </a>
         </div>
-        <div class="card" style="display: grid; place-items: center; background: #1e293b;">
+        <div class="card" style="display: grid; place-items: center; background: #543101;">
           <span>🗺️ मैप लोड हो रहा है...</span>
         </div>
       </div>
@@ -362,7 +364,7 @@
         <div class="card">
           <div style="display:flex; justify-content:space-between;">
             <strong>राहुल उपाध्याय</strong>
-            <span style="color:var(--secondary)">Google Pay</span>
+            <span style="color:var(--primary)">Google Pay</span>
           </div>
           <div style="font-size:1.5rem; font-weight:800; margin:10px 0;">9594277583</div>
           <button class="btn btn-outline" onclick="copyText('9594277583')">📋 कॉपी नंबर</button>
