@@ -209,6 +209,22 @@
       border-top: 1px solid var(--glass-border);
     }
 
+    .footer-officials {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+      font-size: 0.9rem;
+    }
+    .official-name {
+      background: rgba(250, 204, 21, 0.1);
+      padding: 5px 12px;
+      border-radius: 50px;
+      border: 1px solid rgba(250, 204, 21, 0.2);
+    }
+    .official-role { color: var(--primary); font-weight: 600; margin-left: 4px; }
+
     #toast {
       position: fixed;
       bottom: 30px; left: 50%;
@@ -300,13 +316,26 @@
       <h2 class="section-title"><span class="material-icons-round">flag</span> संस्था का परिचय</h2>
       <div class="grid">
         <div class="card" style="grid-column: 1 / -1;">
-          <h3>संस्कृति, एकता और सेवा का संकल्प</h3>
-          <p style="font-size: 1.1rem;">
-            एकता का भाव और सेवा का संकल्प—यही <strong>'ब्राह्मण सेवा संकल्प'</strong> संस्था की पहचान है। 
-            हमारी संस्था हमारे सभी <strong>ब्राह्मण भाइयों को एक सूत्र में पिरोने का एक पावन माध्यम</strong> है। 
-            जहाँ हम अपनी सांस्कृतिक धरोहर को सहेजने के साथ-साथ, अपने समाज और <strong>पर्यावरण (Environment)</strong> को संरक्षित करने के लिए भी अनेकों कार्यक्रम आयोजित करते हैं। 
-            इसी कड़ी में हमारा वार्षिक <strong>'खिचड़ी महोत्सव'</strong> प्रेम, सद्भाव और एकजुटता का एक जीवंत प्रतीक है।
+          <p style="font-size: 1.1rem; margin-bottom: 20px;">
+            एकता का भाव और सेवा का संकल्प—यही <strong>'ब्राह्मण सेवा संकल्प'</strong> संस्था की पहचान है। हमारी संस्था हमारे सभी <strong>सनातनी भाइयों को एक सूत्र में पिरोने का एक पावन माध्यम</strong> है।
           </p>
+          
+          <div class="grid">
+            <div class="card" style="background: rgba(255,255,255,0.03);">
+              <h3><span class="material-icons-round">groups</span> सामाजिक उद्देश्य</h3>
+              <p>समाज में सामाजिक समरसता, सद्भाव, प्रेम एवं आपसी भाईचारे को बढ़ावा देना तथा भारतीय सांस्कृतिक एवं धार्मिक धरोहर के संरक्षण एवं संवर्धन के माध्यम से समाज को एक सूत्र में पिरोने का कार्य करना।</p>
+            </div>
+            
+            <div class="card" style="background: rgba(255,255,255,0.03);">
+              <h3><span class="material-icons-round">temple_hindu</span> धार्मिक उत्थान</h3>
+              <p>क्षेत्रीय एवं स्थानीय मंदिरों के उत्थान, विकास एवं आपसी जुड़ाव को सुदृढ़ करने के उद्देश्य से प्रत्येक माह धार्मिक, सांस्कृतिक एवं आध्यात्मिक कार्यक्रमों का आयोजन करना।</p>
+            </div>
+
+            <div class="card" style="background: rgba(255,255,255,0.03);">
+              <h3><span class="material-icons-round">eco</span> पर्यावरण सेवा</h3>
+              <p>पर्यावरण संरक्षण एवं संवर्धन को प्रोत्साहित करने हेतु पौधारोपण कार्यक्रम आयोजित करना तथा लगाए गए पौधों की देखरेख, संरक्षण एवं दीर्घकालीन संवर्धन सुनिश्चित करना।</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -316,7 +345,7 @@
       <div class="card">
         <h3 style="margin-bottom: 20px; font-size: 1.1rem; color: var(--text-main);">
           <span class="material-icons-round" style="color: var(--primary);">groups</span>
-          खिचड़ी महोत्सव हेतु सहयोग करने वाले अंश दानकर्ताओं के नाम:
+          खिचड़ी महोत्सव हेतु सहयोग करने वाले दानकर्ताओं के नाम:
         </h3>
         <ul class="patron-list">
           <li class="patron-item">
@@ -341,13 +370,13 @@
         <div class="timeline">
           <div class="timeline-item">
             <span class="time">दोपहर 04:00 बजे</span>
-            <strong>श्री सुंदरकाण्ड संगीतमय पाठ</strong>
-            <p> भजन, सत्संग एवं सामूहिक हनुमान चालीसा पाठ।</p>
+            <strong>श्री सुंदरकाण्ड पाठ</strong>
+            <p> संगीतमय श्री सुंदरकांड पाठ, सत्संग भजन एवं सामूहिक श्री हनुमान चालीसा का पाठ।</p>
           </div>
           <div class="timeline-item">
             <span class="time">शाम 08:00 बजे</span>
             <strong>महाआरती</strong>
-            <p>श्री नीलकंठेश्वर महादेव की भव्य आरती।</p>
+            <p>श्री नीलकंठेश्वर महादेव जी का भव्य श्रृंगार और आरती।</p>
           </div>
           <div class="timeline-item">
             <span class="time">रात 08:00 बजे से</span>
@@ -406,6 +435,20 @@
 
   <footer>
     <p><strong>आयोजक: ब्राह्मण सेवा संकल्प संस्था</strong></p>
+    
+    <div style="margin: 15px 0; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px;">
+      <p style="font-weight: 700; color: var(--primary); margin-bottom: 10px;">॥ पदाधिकारी ॥</p>
+      <div class="footer-officials">
+        <span class="official-name">महेश चंद्र पाठक <span class="official-role">(अध्यक्ष)</span></span>
+        <span class="official-name">अमित मिश्रा <span class="official-role">(सचिव)</span></span>
+        <span class="official-name">राहुल उपाध्याय <span class="official-role">(कोषाध्यक्ष)</span></span>
+        <span class="official-name">विरेंद्र पाठक <span class="official-role">(उपाध्यक्ष)</span></span>
+        <span class="official-name">उमाशंकर पाण्डेय <span class="official-role">(उप-सचिव)</span></span>
+        <span class="official-name">अरविंद ओझा <span class="official-role">(उप-कोषाध्यक्ष)</span></span>
+        <span class="official-name">जगदिश मिश्रा <span class="official-role">(सदस्य)</span></span>
+      </div>
+    </div>
+
     <p style="color:var(--text-muted); font-size:0.85rem; opacity: 0.8;">© 2026 खिचड़ी महोत्सव अंबरनाथ | सर्वे भवन्तु सुखिनः</p>
   </footer>
 
